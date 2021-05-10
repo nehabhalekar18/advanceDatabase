@@ -1,0 +1,9 @@
+{
+  "name": "database",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~4.1.1",
+    "neo4j-driver": "^4.2.3",
+    "lodash": "^4.17.21"
+  }
+}
