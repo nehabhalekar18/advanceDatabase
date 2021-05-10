@@ -1,6 +1,6 @@
 // Get the packages we need
 var express = require('express');
-var apiRoutes = require('./routes');
+var userStory1 = require('./userStory1');
 
 // Create our Express application
 var app = express();
@@ -9,7 +9,7 @@ var app = express();
 var port = process.env.PORT || 3000;
 
 
-app.use('/api', apiRoutes);
+app.use('/api/userStory1', userStory1);
 
 // Start the server
 app.listen(port);
