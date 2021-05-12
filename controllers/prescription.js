@@ -6,7 +6,7 @@ function prescription(req, res) {
   return session
     .readTransaction((tx) =>
       tx.run(
-        'MATCH(p:Patient{fname:"Emma"})-[r:BRINGS]->(pr:Prescription{disease:"MalariaPrescription"})-[a:IsSeenBy]->(c:Chemist{fname:"John"}) return p,pr,c'
+        'MATCH (p:Patient{fname:"Emma"})-[r:BRINGS]->(pr:Prescription{disease:"MalariaPrescription"})-[a: IS_SEEN_BY]->(c:Chemist{fName:"John"})  RETURN p,pr,c'
       )
     )
 

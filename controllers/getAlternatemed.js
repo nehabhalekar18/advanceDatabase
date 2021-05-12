@@ -6,7 +6,7 @@ function getAlternatemed(req, res) {
   return session
     .readTransaction((tx) =>
       tx.run(
-        ' MATCH (c:Chemist),(m:Medicine) WHERE c.fname= "John" AND m.medicinename="Primaquine" WITH c as Chemist , m as Medicine MATCH (Chemist)-[r:LooksFor*]->(Medicine)-[r1:HasAlternateDrug]->(n) RETURN n'
+        ' MATCH (c:Chemist),(m:Medicine) WHERE c.fName= "John" AND m.medicineName="Primaquine" WITH c as Chemist , m as Medicine MATCH (Chemist)-[r:LOOKS_FOR*]->(Medicine)-[r1:HAS_ALTERNATE_DRUG]->(n) RETURN n'
       )
     )
 

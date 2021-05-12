@@ -6,7 +6,7 @@ function getOutOfstockmed(req, res) {
   return session
     .readTransaction((tx) =>
       tx.run(
-        "MATCH (c:Chemist)-[a:LooksFor]->(m:Medicine{inStock:false})  RETURN m"
+        " MATCH (c:Chemist)-[a:LOOKS_FOR]->(m:Medicine{inStock:false})  RETURN m"
       )
     )
 
