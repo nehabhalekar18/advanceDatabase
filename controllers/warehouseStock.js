@@ -1,7 +1,5 @@
-
 const { connectionPool } = require('../mongoDb/connectionPool');
-const redi = require('./RedisDatabase');
-
+const redi = require('../mongoDb/redisConnection');
 
 async function stockWarehouse() {
 
@@ -54,7 +52,7 @@ async function stockWarehouse() {
                     }
             },
         ]
-    ).toArray().then((doc) => {
+    ).toArray().then((docs) => {
         if (docs) {
             console.log(docs);
             docs.forEach(function (value, index) {

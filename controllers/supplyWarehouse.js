@@ -1,6 +1,5 @@
-
 const { connectionPool } = require('../mongoDb/connectionPool');
-
+const redi = require('../mongoDb/redisConnection');
 
 async function supplyWarehouse() {
 
