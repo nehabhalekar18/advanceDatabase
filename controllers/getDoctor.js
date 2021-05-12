@@ -11,7 +11,7 @@ function getDoctor(req,res){
       
       .then(res => {
         return res.records.map(record => {
-            return new NodeData(record.get('doctor'));
+          return new NodeData(record.get('doctor'));
           });
       })
 }
