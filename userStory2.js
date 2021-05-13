@@ -25,7 +25,7 @@ router.get("/Symptoms", function (req, res) {
 
 router.get("/Medicines", function (req, res) {
   getMedicines().then((medicine) => {
-    res.json({ result.name: medicine });
+    res.json({ result: medicine });
   });
 });
 
