@@ -17,47 +17,13 @@ const { connectionPool } = require('../mongoDb/connectionPool');
      const d = new Date();
      const today = d.getDate() + '/' + ( d.getMonth()+1 ) + '/' + d.getFullYear();
         let sendback = "";
-    // const callback = (err, doc) => {
-     //     if (doc) {
-     //         console.log(doc);
-     //         doc.forEach(function (value, index) {
-     //             id = doc[index]._id;
-     //             availableStock = doc[index].Stock_Available_Per_Box;
-     //             price = doc[index].Price_In_Euro;
-     //             name = doc[index].Name;
-     //             deliverydays = doc[index].Delivery_Time_In_Days;
-     //             averageSale = doc[index].Average_Sale_Per_Day_Per_Box;
-     //         });
-     //         // update sales table
-     //         if(name){
-     //             let salesInfo = {"Med_id" : id, "Name": name, "Sales_Date": today, "Quantity":2  , "Price_In_Euro":price };
-     //
-     //             dbo.collection('sales_chemist').insertOne(salesInfo, async function (err, res) {
-     //                 if(err) throw err;
-     //                 console.log(res);
-     //             });
-     //
-     //             let stock = availableStock - 2;
-     //             let shouldOrder = availableStock <= (deliverydays * averageSale) ;
-     //             dbo.collection('stock_chemist')
-     //                 .updateOne( { _id : id }, { $set: { Stock_Available_Per_Box : stock, Should_Order : shouldOrder } });
-     //
-     //             return "Medicine sold to Patient";
-     //         }else {
-     //             res.writeHead(200, {'Content-Type': 'text/html'});
-     //             return "Medicine is not in stock";
-     //         }
-     //
-     //     }
-     // };
-
 
     return dbo.collection('stock_chemist').find(
          {
              "Stock_Available_Per_Box": {
-                 $gte: 10
+                 $gte: 2
              },
-             "Name": "Daunorubicin"
+             "Name": "Abraxane"
          },
          {
              projection: {

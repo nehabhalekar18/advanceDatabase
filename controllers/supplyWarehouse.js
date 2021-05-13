@@ -19,17 +19,13 @@ async function supplyWarehouse() {
                 if(records.length != 0){
                     records.forEach(function (value, index) {
                         orderItems.push({"Order_Id": value.Order_Id, "Medicine_Name" : value.Medicine_Name, "Quantity" : value.Order_Quantity, "Price_In_Euro" : value.Price});
-                        dbo.collection('stock_warehouse').findOneAndUpdate({"Name" : value.Medicine_Name}, {$inc: {"Stock_Available_Per_Box" : - value.Order_Quantity}})
+                        dbo.collection('stock_warehouse').findOneAndUpdate({"Name" : value.Medicine_Name}, { $inc: {"Stock_Available_Per_Box" : (-value.Order_Quantity) }})
                     });
                     //updateChemistStock = orderItems;
                     redi.set("update_chemist_stock", JSON.stringify( orderItems ));
                     dbo.collection('sales_warehouse').insertOne({Sales_Date: today, Items:orderItems});
-                    // res.writeHead(200, {'Content-Type': 'text/html'});
-                    // res.end("Order supplied to chemist");
                     console.log("Order supplied to chemist");
                 }else {
-                    // res.writeHead(200, {'Content-Type': 'text/html'});
-                    // res.end("No Order has been placed");
                     console.log("No Order has been placed");
                 }
             }

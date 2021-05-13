@@ -69,8 +69,6 @@ async function stockWarehouse() {
             })
             redi.set("Order_id", orderId);
             redi.set("in_stock", JSON.stringify( inStockMedicines ));
-            //   supplyChemist = inStockMedicines;
-
             return {
                 out_of_stock_medicines: outOfStockMedicines,
                 in_stock_medicines: inStockMedicines

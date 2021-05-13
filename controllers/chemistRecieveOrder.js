@@ -17,9 +17,9 @@ async function newStockChemist() {
             stock = JSON.parse( result );
             if(stock.length != 0){
                 stock.forEach(function (value, index) {
-                    dbo.collection('stock_chemist').findOneAndUpdate({"Name" : value.Medicine_Name}, {$inc: {"Stock_Available_Per_Box" : value.Quantity}})
+                    dbo.collection('stock_chemist').findOneAndUpdate({"Name" : value.Medicine_Name}, {$inc: {"Stock_Available_Per_Box" : value.Quantity}}, )
                 })
-                redi.get("orderId", function (err, result) {
+                redi.get("Order_id", function (err, result) {
                     if (err) {
                         console.log(err);
                     }else {
@@ -30,18 +30,9 @@ async function newStockChemist() {
                             )
                     }
                 })
-                // res.writeHead(200, {'Content-Type': 'text/html'});
-                // res.end("Supply of oder has been recieved");
 
-                // delete all keys from redi
-                redi.del('in_stock');
-                redi.del('update_chemist_stock');
-                redi.del('orderId');
             }
-            // else {
-            //     res.writeHead(200, {'Content-Type': 'text/html'});
-            //     res.end("Supply has not been recieved yet");
-            // }
+
         }
     });
 
