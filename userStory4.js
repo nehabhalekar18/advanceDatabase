@@ -4,6 +4,7 @@ const { stockChemist } = require('./controllers/stockOutMedicine');
 const { orderMedicine } = require('./controllers/chemistOrderMedicine');
 const { stockWarehouse } = require('./controllers/warehouseStock');
 const { supplyWarehouse } = require('./controllers/supplyWarehouse');
+const { newStockChemist } = require('./controllers/chemistRecieveOrder');
 
 var router = express.Router();
 
@@ -41,4 +42,13 @@ router.get('/warehouseSupply', function(req,res) {
             res.json({ result: data });
         })
 });
+
+router.get('/ChemistNewStock', function(req,res) {
+    newStockChemist()
+        .then(data => {
+            res.json({ result: data });
+        })
+});
+
+
 module.exports=router;
