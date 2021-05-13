@@ -2,8 +2,11 @@
   "name": "database",
   "main": "server.js",
   "dependencies": {
-    "express": "~4.1.1",
+    "express": "^4.17.1",
+    "ioredis": "^4.27.2",
+    "lodash": "^4.17.21",
+    "mongodb": "^3.6.6",
     "neo4j-driver": "^4.2.3",
-    "lodash": "^4.17.21"
+    "redis": "^3.1.2"
   }
 }
